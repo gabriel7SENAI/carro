@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#090d13" />
+  <title>Automotive Studio — Audi S3 e Celta 3D</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Automotive Studio">
+        <span class="brand-mark">A</span>
+        <span>AUTOMOTIVE<span class="brand-muted"> / STUDIO</span></span>
+      </a>
+      <div class="status"><span class="status-dot"></span> VISUALIZADOR 3D</div>
+    </header>
+
+    <section class="hero">
+      <div class="intro">
+        <p class="eyebrow">AUTOMOTIVE · MODELOS 3D</p>
+        <h1 id="modelName">Audi S3.<br /><span>Limousine.</span></h1>
+        <p class="description" id="modelDescription">Carregando o modelo GLB de teste do Audi S3.</p>
+        <div class="specs">
+          <div><strong id="bodyType">SEDAN</strong><small>CARROCERIA</small></div>
+          <div><strong id="modelVersion">8V</strong><small>REFERÊNCIA</small></div>
+          <div><strong>3D</strong><small>INTERATIVO</small></div>
+        </div>
+      </div>
+
+      <div class="viewer" id="viewer">
+        <div class="viewer-label"><span>EXTERIOR</span><span id="viewHint">ARRASTE PARA GIRAR</span></div>
+        <div id="scene" aria-label="Visualizador 3D do Chevrolet Celta 2005"></div>
+        <div class="viewer-bottom">
+          <span><i class="tiny-dot"></i> LIVE RENDER</span>
+          <span id="loading">PREPARANDO CENA…</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="lesson" id="lesson" aria-labelledby="lessonTitle" hidden>
+      <p class="eyebrow">OFICINA VIRTUAL · PRIMEIRA ATIVIDADE</p>
+      <h2 id="lessonTitle">Troque o filtro de ar</h2>
+      <p class="lesson-status" id="lessonStatus" aria-live="polite"></p>
+      <progress id="lessonProgress" max="4" value="0" aria-label="Etapas concluídas"></progress>
+      <p id="lessonFeedback" class="lesson-feedback" role="status"></p>
+      <div class="part-controls">
+        <button id="lessonAction" class="lesson-action" type="button">COMEÇAR ATIVIDADE</button>
+        <button id="lessonReset" class="reset-btn" type="button" hidden>SAIR DA ATIVIDADE</button>
+      </div>
+      <p class="footnote">Demonstração com peças simplificadas e presilhas fictícias. Não representa o procedimento de manutenção do Audi.</p>
+    </section>
+    <section class="controls">
+      <div class="control-title">
+        <div><p class="eyebrow">PERSONALIZAÇÃO</p><h2>Explore os modelos</h2></div>
+        <button id="resetBtn" class="reset-btn" type="button">REINICIAR VISÃO ↗</button>
+      </div>
+      <div class="control-grid">
+        <div class="control-card">
+          <label class="control-label" for="modelSelect">MODELO DO CARRO</label>
+          <select id="modelSelect" class="model-select" disabled>
+            <option value="audi">Audi S3 Limousine · GLB</option>
+            <option value="celta">Chevrolet Celta 2005</option>
+          </select>
+        </div>
+        <div class="control-card">
+          <span class="control-label">COR DA CARROCERIA</span>
+          <div class="swatches" role="group" aria-label="Cor da carroceria">
+            <button class="swatch" data-color="#c72d3b" style="--swatch:#c72d3b" aria-label="Vermelho" title="Vermelho"></button>
+            <button class="swatch active" data-color="#b6bec4" style="--swatch:#b6bec4" aria-label="Prata" title="Prata"></button>
+            <button class="swatch" data-color="#172a46" style="--swatch:#172a46" aria-label="Azul" title="Azul"></button>
+            <button class="swatch" data-color="#171a20" style="--swatch:#171a20" aria-label="Grafite" title="Grafite"></button>
+            <button class="swatch" data-color="#d7a84b" style="--swatch:#d7a84b" aria-label="Dourado" title="Dourado"></button>
+          </div>
+        </div>
+        <div class="control-card">
+          <span class="control-label">ILUMINAÇÃO</span>
+          <button id="lightsBtn" class="toggle-control" type="button" aria-pressed="true"><span class="toggle-dot"></span><span>Faróis dianteiros</span><b>ON</b></button>
+        </div>
+        <div class="control-card">
+          <span class="control-label">CÂMERA</span>
+          <button id="spinBtn" class="toggle-control" type="button" aria-pressed="false"><span class="toggle-dot"></span><span>Rotação automática</span><b>OFF</b></button>
+        </div>
+      </div>
+      <div class="part-controls" role="group" aria-label="Abertura das peças do Audi">
+        <button id="hoodBtn" class="reset-btn" type="button" aria-pressed="false" disabled>ABRIR CAPÔ</button>
+        <button id="trunkBtn" class="reset-btn" type="button" aria-pressed="false" disabled>ABRIR PORTA-MALAS</button>
+      </div>
+      <p class="footnote" id="modelNote">Carregando modelo de teste…</p>
+      <p class="footnote">Use o mouse para girar · Scroll para aproximar · Arraste com o botão direito para mover a câmera</p>
+    </section>
+    <footer><span>AUTOMOTIVE STUDIO / MODELOS 3D</span><span>THREE.JS · REAL-TIME RENDER</span></footer>
+  </main>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.164.1/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.164.1/examples/jsm/"
+      }
+    }
+  </script>
+  <script type="module" src="main.js"></script>
+</body>
+</html>
